@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
-// We updated this path to look in the main folder where your file actually is!
 import SmoothScrolling from "../SmoothScrolling"; 
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"], 
+  variable: "--font-inter" 
+});
+
+const playfair = Playfair_Display({ 
+  subsets: ["latin"], 
+  variable: "--font-playfair" 
+});
 
 export const metadata: Metadata = {
   title: "AyurAgent Labs | Digital Growth",
@@ -18,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         {/* @ts-ignore: Bypassing React 19 type mismatch with Lenis */}
         <SmoothScrolling>{children}</SmoothScrolling>
       </body>
