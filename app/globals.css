@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Assign the fonts to the entire page */
 :root {
   font-family: var(--font-inter), sans-serif;
