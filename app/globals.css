@@ -11,3 +11,7 @@
 h1, h2, h3, h4 {
   font-family: var(--font-playfair), serif;
 }
+/* Force headings to use the elegant serif font */
+h1, h2, h3, h4 {
+  font-family: var(--font-playfair), serif !important;
+}
