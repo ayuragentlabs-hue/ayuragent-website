@@ -31,9 +31,12 @@ export default function Home() {
           <span className="text-emerald-700 font-semibold tracking-wider uppercase text-sm mb-4 block">
             AyurAgent Labs Pvt Ltd
           </span>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-emerald-950">
-            Kerala's Premier <br /> Ayurveda Marketer.
-          </h1>
+          <h1 
+  className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-emerald-950" 
+  style={{ fontFamily: 'var(--font-playfair), serif' }}
+>
+  Kerala's Premier <br /> Ayurveda Marketer.
+</h1>
           <p className="text-lg md:text-xl text-emerald-800/80 max-w-2xl mx-auto mb-10">
             We build exclusive, hard-to-replicate digital growth systems that scale traditional wellness clinics into dominant online brands.
           </p>
