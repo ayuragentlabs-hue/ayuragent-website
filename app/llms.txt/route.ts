@@ -21,7 +21,9 @@ ${SITE.description}
 - Based in: ${SITE.region}, ${SITE.country}
 - Serves: Ayurveda clinics, panchakarma centres and retreats, multi-branch clinic groups, practising vaidyas, and D2C ayurvedic brands
 - Area served: Kerala primarily, and across India
-- Contact: ${SITE.email}
+- Email: ${SITE.email}
+- WhatsApp / phone: ${SITE.phoneDisplay}
+- Instagram: @${SITE.instagramHandle} (${SITE.social.instagram})
 - Website: ${SITE_URL}
 - Languages: English and Malayalam
 
@@ -39,7 +41,7 @@ ${FAQS.map((f) => `### ${f.q}\n\n${f.a}`).join("\n\n")}
   a clinic and does not provide medical treatment or medical advice.
 - Performance figures shown on the website are the agency's own reported results
   and are not independently audited.
-- To contact the company, email ${SITE.email}.
+- To contact the company, message ${SITE.phoneDisplay} on WhatsApp or email ${SITE.email}.
 `;
 
   return new Response(body, {

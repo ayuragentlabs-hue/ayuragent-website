@@ -2,8 +2,10 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { FlipButton } from "@/components/ui/magnetic";
+import { InstagramIcon, MailIcon, WhatsAppIcon } from "@/components/ui/icons";
+import { CharFlip, Magnetic } from "@/components/ui/magnetic";
 import { Reveal, RevealLines } from "@/components/ui/reveal";
+import { MAILTO_URL, SITE, WHATSAPP_URL } from "@/lib/site";
 
 export default function CTA() {
   const ref = useRef<HTMLElement>(null);
@@ -52,12 +54,47 @@ export default function CTA() {
 
           <Reveal delay={0.2}>
             <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-              <FlipButton label="Book a strategy call" href="mailto:hello@ayuragentlabs.com" variant="light" />
+              {/* WhatsApp first — it is how clinics in Kerala actually reply. */}
+              <Magnetic strength={0.2}>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2.5 rounded-full bg-white px-7 py-3.5 text-[0.95rem] font-medium text-ink transition-colors duration-300 hover:bg-brand-wash"
+                >
+                  <WhatsAppIcon className="h-[1.05rem] w-[1.05rem] text-brand" />
+                  <CharFlip label="Chat on WhatsApp" />
+                </a>
+              </Magnetic>
+
+              <Magnetic strength={0.2}>
+                <a
+                  href={SITE.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2.5 rounded-full border border-deep-line px-7 py-3.5 text-[0.95rem] font-medium text-white/80 transition-colors duration-300 hover:border-brand-lite hover:text-white"
+                >
+                  <InstagramIcon className="h-[1.05rem] w-[1.05rem]" />
+                  <CharFlip label="Instagram" />
+                </a>
+              </Magnetic>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.26}>
+            <div className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2 pt-1 font-mono text-[0.8rem] tracking-[0.05em] text-white/50">
               <a
-                href="mailto:hello@ayuragentlabs.com"
-                className="rounded-full border border-deep-line px-7 py-3.5 font-mono text-[0.82rem] tracking-[0.06em] text-white/65 transition-colors duration-300 hover:border-brand-lite hover:text-white"
+                href={MAILTO_URL}
+                className="inline-flex items-center gap-2 transition-colors duration-300 hover:text-white"
               >
-                hello@ayuragentlabs.com
+                <MailIcon className="h-4 w-4" />
+                {SITE.email}
+              </a>
+              <a
+                href={`tel:${SITE.phone}`}
+                className="transition-colors duration-300 hover:text-white"
+              >
+                {SITE.phoneDisplay}
               </a>
             </div>
           </Reveal>

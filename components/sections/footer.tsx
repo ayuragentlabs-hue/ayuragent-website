@@ -2,9 +2,10 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { InstagramIcon, WhatsAppIcon } from "@/components/ui/icons";
 import { CharFlip } from "@/components/ui/magnetic";
 import { VIEWPORT } from "@/components/ui/motion-config";
-import { SITE } from "@/lib/site";
+import { MAILTO_URL, SITE, WHATSAPP_URL } from "@/lib/site";
 
 const COLUMNS = [
   {
@@ -27,11 +28,11 @@ const COLUMNS = [
     ],
   },
   {
-    title: "Social",
+    title: "Connect",
     links: [
-      { label: "Instagram", href: "#" },
-      { label: "LinkedIn", href: "#" },
-      { label: "YouTube", href: "#" },
+      { label: "WhatsApp", href: WHATSAPP_URL, external: true },
+      { label: "Instagram", href: SITE.social.instagram, external: true },
+      { label: "Email", href: MAILTO_URL },
     ],
   },
 ];
@@ -75,6 +76,34 @@ export default function Footer() {
             <p className="font-mono text-[0.72rem] uppercase tracking-[0.12em] text-ink-faint">
               {SITE.region}, {SITE.country}
             </p>
+
+            {/* Direct-contact buttons */}
+            <div className="flex items-center gap-2.5 pt-1">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Message AyurAgent Labs on WhatsApp at ${SITE.phoneDisplay}`}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink-soft transition-colors duration-300 hover:border-brand hover:bg-brand hover:text-white"
+              >
+                <WhatsAppIcon className="h-[1.05rem] w-[1.05rem]" />
+              </a>
+              <a
+                href={SITE.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`AyurAgent Labs on Instagram, @${SITE.instagramHandle}`}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink-soft transition-colors duration-300 hover:border-brand hover:bg-brand hover:text-white"
+              >
+                <InstagramIcon className="h-[1.05rem] w-[1.05rem]" />
+              </a>
+              <a
+                href={`tel:${SITE.phone}`}
+                className="ml-1 font-mono text-[0.78rem] tracking-[0.04em] text-ink-soft transition-colors duration-300 hover:text-brand"
+              >
+                {SITE.phoneDisplay}
+              </a>
+            </div>
           </div>
 
           {/* Link columns */}
@@ -88,6 +117,9 @@ export default function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
+                      {...("external" in link && link.external
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
                       className="group inline-block text-[0.92rem] text-ink-soft transition-colors hover:text-brand"
                     >
                       <CharFlip label={link.label} />

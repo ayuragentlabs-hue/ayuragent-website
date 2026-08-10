@@ -14,7 +14,11 @@ export const SITE = {
   name: "AyurAgent Labs",
   legalName: "AyurAgent Labs Pvt Ltd",
   url: SITE_URL,
-  email: "hello@ayuragentlabs.com",
+  email: "mothalali@ayuragentlabs.com",
+  /** E.164 for wa.me / tel: links, plus a readable form for display. */
+  phone: "+919645372369",
+  phoneDisplay: "+91 96453 72369",
+  instagramHandle: "ayuragentlabs",
   tagline: "The best Ayurveda marketer your clinic deserves",
   description:
     "AyurAgent Labs is an Ayurveda marketing agency in Kerala, India. We build patient acquisition systems for Ayurveda clinics, panchakarma retreats, practising vaidyas and D2C ayurvedic brands — brand, website, Meta and Google campaigns, and WhatsApp automation, run end to end.",
@@ -28,11 +32,20 @@ export const SITE = {
     bio: "Aswin Reghu is the founder of AyurAgent Labs, an Ayurveda marketing agency based in Kerala, India. He works with clinics, panchakarma retreats and ayurvedic brands on positioning, patient acquisition and the automation their front desk runs on.",
   },
   social: {
-    instagram: "https://instagram.com/",
-    linkedin: "https://linkedin.com/",
-    youtube: "https://youtube.com/",
+    // Only real, specific profile URLs belong here — they are emitted as
+    // schema.org sameAs, where a bare platform homepage is worse than nothing.
+    instagram: "https://instagram.com/ayuragentlabs",
   },
 } as const;
+
+/** Pre-filled WhatsApp deep link — opens the app on mobile, web on desktop. */
+export const WHATSAPP_URL = `https://wa.me/${SITE.phone.replace(/\D/g, "")}?text=${encodeURIComponent(
+  "Hi AyurAgent Labs — I'd like to talk about growing my clinic.",
+)}`;
+
+export const MAILTO_URL = `mailto:${SITE.email}?subject=${encodeURIComponent(
+  "Working with AyurAgent Labs",
+)}`;
 
 export const SERVICES = [
   {
@@ -106,6 +119,6 @@ export const FAQS = [
   },
   {
     q: "How do I start working with AyurAgent Labs?",
-    a: "Email hello@ayuragentlabs.com with where your clinic is today and where you want it in twelve months. We will tell you honestly whether we are the right fit before proposing any work.",
+    a: "Message us on WhatsApp at +91 96453 72369, or email mothalali@ayuragentlabs.com, with where your clinic is today and where you want it in twelve months. We will tell you honestly whether we are the right fit before proposing any work.",
   },
 ] as const;
