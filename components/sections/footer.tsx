@@ -73,7 +73,7 @@ export default function Footer() {
               Founded by{" "}
               <span className="font-medium text-ink">{SITE.founder.name}</span>
             </p>
-            <p className="font-mono text-[0.72rem] uppercase tracking-[0.12em] text-ink-faint">
+            <p className="font-mono text-[0.75rem] md:text-[0.72rem] uppercase tracking-[0.12em] text-ink-faint">
               {SITE.region}, {SITE.country}
             </p>
 
@@ -84,7 +84,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Message AyurAgent Labs on WhatsApp at ${SITE.phoneDisplay}`}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink-soft transition-colors duration-300 hover:border-brand hover:bg-brand hover:text-white"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink-soft transition-colors duration-300 hover:border-brand hover:bg-brand hover:text-white"
               >
                 <WhatsAppIcon className="h-[1.05rem] w-[1.05rem]" />
               </a>
@@ -93,13 +93,13 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`AyurAgent Labs on Instagram, @${SITE.instagramHandle}`}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink-soft transition-colors duration-300 hover:border-brand hover:bg-brand hover:text-white"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink-soft transition-colors duration-300 hover:border-brand hover:bg-brand hover:text-white"
               >
                 <InstagramIcon className="h-[1.05rem] w-[1.05rem]" />
               </a>
               <a
                 href={`tel:${SITE.phone}`}
-                className="ml-1 font-mono text-[0.78rem] tracking-[0.04em] text-ink-soft transition-colors duration-300 hover:text-brand"
+                className="ml-1 inline-flex min-h-11 items-center font-mono text-[0.78rem] tracking-[0.04em] text-ink-soft transition-colors duration-300 hover:text-brand"
               >
                 {SITE.phoneDisplay}
               </a>
@@ -109,7 +109,7 @@ export default function Footer() {
           {/* Link columns */}
           {COLUMNS.map((col) => (
             <div key={col.title} className="space-y-4">
-              <h4 className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-faint">
+              <h4 className="font-mono text-[0.75rem] md:text-[0.7rem] uppercase tracking-[0.16em] text-ink-faint">
                 {col.title}
               </h4>
               <ul className="space-y-2.5">
@@ -120,7 +120,7 @@ export default function Footer() {
                       {...("external" in link && link.external
                         ? { target: "_blank", rel: "noopener noreferrer" }
                         : {})}
-                      className="group inline-block text-[0.92rem] text-ink-soft transition-colors hover:text-brand"
+                      className="group inline-block py-2.5 text-[0.92rem] text-ink-soft transition-colors hover:text-brand md:py-0"
                     >
                       <CharFlip label={link.label} />
                     </a>
@@ -133,7 +133,7 @@ export default function Footer() {
 
         {/* Legal row */}
         <div className="flex flex-col items-start justify-between gap-4 border-t border-line py-8 sm:flex-row sm:items-center">
-          <p className="font-mono text-[0.72rem] tracking-[0.06em] text-ink-faint">
+          <p className="font-mono text-[0.75rem] md:text-[0.72rem] tracking-[0.06em] text-ink-faint">
             © {new Date().getFullYear()} AyurAgent Labs Pvt Ltd. All rights reserved.
           </p>
           <div className="flex gap-6">
@@ -141,7 +141,7 @@ export default function Footer() {
               <a
                 key={l}
                 href="#"
-                className="group font-mono text-[0.72rem] tracking-[0.06em] text-ink-faint transition-colors hover:text-ink"
+                className="group font-mono text-[0.75rem] md:text-[0.72rem] tracking-[0.06em] text-ink-faint transition-colors hover:text-ink"
               >
                 <CharFlip label={l} />
               </a>

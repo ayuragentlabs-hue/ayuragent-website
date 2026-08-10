@@ -46,14 +46,14 @@ export default function Impact() {
         className="pointer-events-none absolute inset-0 -z-10"
         aria-hidden="true"
       >
-        <div className="absolute left-1/2 top-0 h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-brand-wash/60 blur-[130px]" />
+        <div className="absolute left-1/2 top-0 h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-brand-wash/60 blur-[70px] md:blur-[130px]" />
       </motion.div>
 
       <div className="page-container">
         <div className="flex flex-col justify-between gap-8 pb-16 md:flex-row md:items-end">
           <div className="max-w-2xl space-y-5">
             <Reveal>
-              <span className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-brand">
+              <span className="font-mono text-[0.75rem] md:text-[0.7rem] uppercase tracking-[0.2em] text-brand">
                 Impact at scale
               </span>
             </Reveal>
@@ -80,7 +80,7 @@ export default function Impact() {
               transition={{ duration: 0.8, delay: i * 0.09, ease: EASE }}
               className="group relative bg-paper p-8 transition-colors duration-500 hover:bg-paper-soft"
             >
-              <span className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-ink-faint">
+              <span className="font-mono text-[0.75rem] md:text-[0.68rem] uppercase tracking-[0.14em] text-ink-faint">
                 {stat.label}
               </span>
               <div className="mt-6 text-[clamp(2.3rem,4.6vw,3.4rem)] font-semibold leading-none tracking-tight text-ink transition-colors duration-500 group-hover:text-brand">

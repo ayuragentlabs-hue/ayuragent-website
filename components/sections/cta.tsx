@@ -25,7 +25,7 @@ export default function CTA() {
       >
         <div className="grid-backdrop pointer-events-none absolute inset-0 opacity-70" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <div className="animate-breathe absolute left-1/2 top-1/2 h-[520px] w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/28 blur-[140px]" />
+          <div className="animate-breathe absolute left-1/2 top-1/2 h-[520px] w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/28 blur-[70px] md:blur-[140px]" />
         </div>
 
         <div className="relative mx-auto max-w-3xl space-y-8">
@@ -35,7 +35,7 @@ export default function CTA() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-lite opacity-70" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-lite" />
               </span>
-              <span className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-white/65">
+              <span className="font-mono text-[0.75rem] md:text-[0.7rem] uppercase tracking-[0.16em] text-white/65">
                 Now booking for Q3
               </span>
             </span>
@@ -85,14 +85,14 @@ export default function CTA() {
             <div className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2 pt-1 font-mono text-[0.8rem] tracking-[0.05em] text-white/50">
               <a
                 href={MAILTO_URL}
-                className="inline-flex items-center gap-2 transition-colors duration-300 hover:text-white"
+                className="inline-flex min-h-11 items-center gap-2 transition-colors duration-300 hover:text-white"
               >
                 <MailIcon className="h-4 w-4" />
                 {SITE.email}
               </a>
               <a
                 href={`tel:${SITE.phone}`}
-                className="transition-colors duration-300 hover:text-white"
+                className="inline-flex min-h-11 items-center transition-colors duration-300 hover:text-white"
               >
                 {SITE.phoneDisplay}
               </a>

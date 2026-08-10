@@ -41,7 +41,7 @@ export default function Nav() {
       >
         <nav className="page-container flex h-[72px] items-center justify-between">
           {/* Wordmark */}
-          <a href="#top" className="group flex items-center gap-2.5">
+          <a href="#top" className="group -my-2 flex items-center gap-2.5 py-2">
             <span className="relative flex h-7 w-7 items-center justify-center">
               <span className="absolute inset-0 rounded-full bg-brand/12" />
               <svg viewBox="0 0 24 24" className="h-4 w-4 text-brand" fill="none">
@@ -81,7 +81,7 @@ export default function Nav() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-mid opacity-70" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
               </span>
-              <span className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-ink-soft">
+              <span className="font-mono text-[0.75rem] md:text-[0.68rem] uppercase tracking-[0.14em] text-ink-soft">
                 Booking Q3
               </span>
             </div>
@@ -100,7 +100,7 @@ export default function Nav() {
               onClick={() => setOpen((o) => !o)}
               aria-label="Toggle menu"
               aria-expanded={open}
-              className="flex h-9 w-9 flex-col items-center justify-center gap-[5px] rounded-full border border-line md:hidden"
+              className="flex h-11 w-11 flex-col items-center justify-center gap-[5px] rounded-full border border-line md:hidden"
             >
               <span
                 className={`block h-[1.5px] w-4 bg-ink transition-transform duration-300 ${open ? "translate-y-[3.25px] rotate-45" : ""}`}
@@ -126,7 +126,7 @@ export default function Nav() {
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="border-b border-line py-3 text-lg tracking-tight last:border-0"
+              className="border-b border-line py-3.5 text-lg tracking-tight last:border-0"
             >
               {l.label}
             </a>

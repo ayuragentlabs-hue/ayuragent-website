@@ -60,7 +60,7 @@ export default function Hero() {
     <section
       id="top"
       ref={ref}
-      className="relative flex min-h-[100svh] items-center overflow-hidden pt-28 pb-20"
+      className="relative flex min-h-[100svh] items-center overflow-hidden pt-24 pb-16 md:pt-28 md:pb-20"
     >
       {/* Ambient green glows */}
       <motion.div
@@ -68,9 +68,9 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0 -z-10"
         aria-hidden="true"
       >
-        <div className="animate-breathe absolute -left-[10%] top-[8%] h-[520px] w-[520px] rounded-full bg-brand-lite/25 blur-[130px]" />
-        <div className="absolute right-[4%] top-[22%] h-[600px] w-[600px] rounded-full bg-brand/12 blur-[150px]" />
-        <div className="absolute bottom-[-15%] left-1/3 h-[420px] w-[520px] rounded-full bg-brand-wash/70 blur-[120px]" />
+        <div className="animate-breathe absolute -left-[10%] top-[8%] h-[520px] w-[520px] rounded-full bg-brand-lite/25 blur-[70px] md:blur-[130px]" />
+        <div className="absolute right-[4%] top-[22%] h-[600px] w-[600px] rounded-full bg-brand/12 blur-[70px] md:blur-[150px]" />
+        <div className="absolute bottom-[-15%] left-1/3 h-[420px] w-[520px] rounded-full bg-brand-wash/70 blur-[70px] md:blur-[120px]" />
       </motion.div>
 
       {/* Faint grid */}
@@ -80,7 +80,7 @@ export default function Hero() {
       />
 
       <div className="page-container">
-        <div className="flex flex-col items-center gap-14 md:flex-row md:items-center md:gap-6">
+        <div className="flex flex-col items-center gap-10 md:flex-row md:items-center md:gap-6">
           {/* ---------- Copy ---------- */}
           <motion.div
             style={{ y: copyY, opacity: copyOpacity }}
@@ -90,13 +90,13 @@ export default function Hero() {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: EASE }}
-              className="inline-flex items-center gap-2.5 rounded-full border border-line bg-paper/70 px-4 py-1.5 backdrop-blur"
+              className="inline-flex items-center gap-2.5 rounded-full border border-line bg-paper/70 px-4 py-1.5 md:backdrop-blur"
             >
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-mid opacity-70" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
               </span>
-              <span className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-soft">
+              <span className="font-mono text-[0.75rem] md:text-[0.7rem] uppercase tracking-[0.16em] text-ink-soft">
                 Now booking for Q3
               </span>
             </motion.div>
@@ -194,7 +194,7 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.86 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.3, ease: EASE, delay: 0.25 }}
-              className="relative mx-auto aspect-square w-full max-w-[440px]"
+              className="relative mx-auto aspect-square w-full max-w-[280px] sm:max-w-[340px] md:max-w-[440px]"
             >
               <Emblem />
             </motion.div>
@@ -208,7 +208,7 @@ export default function Hero() {
         className="absolute inset-x-0 bottom-7 flex justify-center"
       >
         <div className="flex flex-col items-center gap-2">
-          <span className="font-mono text-[0.64rem] uppercase tracking-[0.24em] text-ink-faint">
+          <span className="font-mono text-[0.75rem] md:text-[0.64rem] uppercase tracking-[0.24em] text-ink-faint">
             Scroll
           </span>
           <span className="relative h-9 w-[1px] overflow-hidden bg-line-strong">
@@ -348,9 +348,9 @@ function FloatChip({
       <motion.div
         animate={{ y: [0, -9, 0] }}
         transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay }}
-        className="rounded-xl border border-line bg-paper/85 px-3.5 py-2.5 shadow-[0_14px_36px_-14px_rgba(6,33,26,0.28)] backdrop-blur-md"
+        className="rounded-xl border border-line bg-paper/85 px-3.5 py-2.5 shadow-[0_14px_36px_-14px_rgba(6,33,26,0.28)] md:backdrop-blur-md"
       >
-        <div className="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-ink-faint">
+        <div className="font-mono text-[0.75rem] md:text-[0.6rem] uppercase tracking-[0.14em] text-ink-faint">
           {label}
         </div>
         <div className="text-lg font-semibold leading-tight text-brand">{value}</div>

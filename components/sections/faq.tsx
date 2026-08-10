@@ -21,7 +21,7 @@ export default function FAQ() {
           {/* Heading column */}
           <div className="lg:sticky lg:top-28 lg:self-start">
             <Reveal>
-              <span className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-brand">
+              <span className="font-mono text-[0.75rem] md:text-[0.7rem] uppercase tracking-[0.2em] text-brand">
                 Questions
               </span>
             </Reveal>

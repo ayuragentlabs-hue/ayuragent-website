@@ -44,7 +44,7 @@ export default function Testimonial() {
       <div className="page-container">
         <div ref={ref} className="mx-auto max-w-4xl">
           <Reveal>
-            <span className="mb-10 block font-mono text-[0.7rem] uppercase tracking-[0.2em] text-brand">
+            <span className="mb-10 block font-mono text-[0.75rem] md:text-[0.7rem] uppercase tracking-[0.2em] text-brand">
               How we work
             </span>
           </Reveal>
@@ -82,7 +82,7 @@ export default function Testimonial() {
                 <span className="block text-[0.98rem] font-medium">
                   {SITE.founder.name}
                 </span>
-                <span className="block font-mono text-[0.72rem] uppercase tracking-[0.12em] text-ink-faint">
+                <span className="block font-mono text-[0.75rem] md:text-[0.72rem] uppercase tracking-[0.12em] text-ink-faint">
                   {SITE.founder.role}, {SITE.name} · {SITE.region}, {SITE.country}
                 </span>
               </span>

@@ -19,8 +19,8 @@ export default function Services() {
       {/* Depth: grid + green glows */}
       <div className="grid-backdrop pointer-events-none absolute inset-0 opacity-70" aria-hidden="true" />
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="animate-breathe absolute -right-[8%] top-[6%] h-[560px] w-[560px] rounded-full bg-brand/25 blur-[150px]" />
-        <div className="absolute -left-[10%] bottom-[4%] h-[480px] w-[480px] rounded-full bg-brand-mid/16 blur-[140px]" />
+        <div className="animate-breathe absolute -right-[8%] top-[6%] h-[560px] w-[560px] rounded-full bg-brand/25 blur-[70px] md:blur-[150px]" />
+        <div className="absolute -left-[10%] bottom-[4%] h-[480px] w-[480px] rounded-full bg-brand-mid/16 blur-[70px] md:blur-[140px]" />
       </div>
 
       <div className="page-container relative">
@@ -28,7 +28,7 @@ export default function Services() {
         <div className="flex flex-col justify-between gap-8 pb-16 md:flex-row md:items-end">
           <div className="max-w-2xl space-y-6">
             <Reveal>
-              <span className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-brand-lite">
+              <span className="font-mono text-[0.75rem] md:text-[0.7rem] uppercase tracking-[0.2em] text-brand-lite">
                 Capabilities
               </span>
             </Reveal>
@@ -76,7 +76,7 @@ export default function Services() {
                   aria-expanded={isActive}
                   className="relative flex w-full items-start gap-6 px-1 py-8 text-left md:gap-10 md:px-3"
                 >
-                  <span className="pt-2 font-mono text-[0.72rem] tracking-[0.14em] text-brand-lite">
+                  <span className="pt-2 font-mono text-[0.75rem] md:text-[0.72rem] tracking-[0.14em] text-brand-lite">
                     {String(i + 1).padStart(2, "0")}
                   </span>
 
@@ -116,7 +116,7 @@ export default function Services() {
                             {service.deliverables.map((d) => (
                               <span
                                 key={d}
-                                className="rounded-full border border-deep-line bg-white/[0.04] px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-white/60"
+                                className="rounded-full border border-deep-line bg-white/[0.04] px-3 py-1 font-mono text-[0.75rem] md:text-[0.68rem] uppercase tracking-[0.1em] text-white/60"
                               >
                                 {d}
                               </span>

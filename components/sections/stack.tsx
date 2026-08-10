@@ -34,7 +34,7 @@ export default function Stack() {
       <div className="page-container">
         <div className="mx-auto max-w-2xl space-y-5 text-center">
           <Reveal>
-            <span className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-brand">
+            <span className="font-mono text-[0.75rem] md:text-[0.7rem] uppercase tracking-[0.2em] text-brand">
               The build environment
             </span>
           </Reveal>

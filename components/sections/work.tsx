@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { useRef } from "react";
 import { Reveal, RevealLines } from "@/components/ui/reveal";
+import { useIsDesktop } from "@/components/ui/use-media-query";
 
 /**
  * Case studies are anonymised by engagement type rather than named. Only add a
@@ -68,22 +69,36 @@ function ProjectCard({
   const scale = useTransform(progress, [i / total, 1], [1, targetScale]);
   const cardOpacity = useTransform(progress, [i / total, (i + 0.85) / total], [1, 0.55]);
 
+  // The pinned stack needs a card shorter than the viewport. On phones the
+  // cards are taller than that, so they'd be clipped — fall back to a plain
+  // scrolling list there and keep the stack for screens that can hold it.
+  const isDesktop = useIsDesktop();
+
   return (
-    <div className="sticky top-0 flex h-[100svh] items-center justify-center px-0">
+    <div
+      className={
+        isDesktop
+          ? "sticky top-0 flex h-[100svh] items-center justify-center px-0"
+          : "flex items-center justify-center pb-5"
+      }
+    >
       <motion.article
-        style={{ scale, top: `${i * 22}px` }}
-        className="relative w-full max-w-[1100px] overflow-hidden rounded-[26px] border border-line bg-paper shadow-[0_40px_100px_-40px_rgba(6,33,26,0.3)]"
+        style={isDesktop ? { scale, top: `${i * 22}px` } : undefined}
+        className="relative w-full max-w-[1100px] overflow-hidden rounded-[22px] border border-line bg-paper shadow-[0_24px_60px_-30px_rgba(6,33,26,0.28)] md:rounded-[26px] md:shadow-[0_40px_100px_-40px_rgba(6,33,26,0.3)]"
       >
-        <motion.div style={{ opacity: cardOpacity }} className="grid gap-0 md:grid-cols-2">
+        <motion.div
+          style={isDesktop ? { opacity: cardOpacity } : undefined}
+          className="grid gap-0 md:grid-cols-2"
+        >
           {/* Copy */}
-          <div className="flex flex-col justify-between gap-8 p-8 md:p-11">
+          <div className="flex flex-col justify-between gap-7 p-6 sm:p-8 md:p-11">
             <div className="space-y-5">
               <div className="flex items-center gap-3">
-                <span className="font-mono text-[0.68rem] tracking-[0.16em] text-brand">
+                <span className="font-mono text-[0.75rem] tracking-[0.16em] text-brand md:text-[0.68rem]">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="h-px w-8 bg-line-strong" />
-                <span className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-ink-faint">
+                <span className="font-mono text-[0.75rem] md:text-[0.72rem] uppercase tracking-[0.14em] text-ink-faint md:text-[0.68rem]">
                   {project.category}
                 </span>
               </div>
@@ -102,7 +117,7 @@ function ProjectCard({
                 {project.tags.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full border border-line bg-paper-soft px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-ink-soft"
+                    className="rounded-full border border-line bg-paper-soft px-3 py-1.5 font-mono text-[0.75rem] md:text-[0.72rem] uppercase tracking-[0.1em] text-ink-soft md:py-1 md:text-[0.68rem]"
                   >
                     {t}
                   </span>
@@ -161,7 +176,7 @@ function ProjectCard({
               </g>
             </svg>
             <div className="absolute bottom-5 left-5 rounded-lg bg-white/15 px-3 py-1.5 backdrop-blur-md">
-              <span className="font-mono text-[0.66rem] uppercase tracking-[0.14em] text-white">
+              <span className="font-mono text-[0.75rem] md:text-[0.72rem] uppercase tracking-[0.14em] text-white md:text-[0.66rem]">
                 Case study
               </span>
             </div>
