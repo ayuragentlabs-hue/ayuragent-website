@@ -1,21 +1,30 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Geist_Mono, Inter_Tight } from "next/font/google";
 import "./globals.css";
-import SmoothScrolling from "../SmoothScrolling"; 
+import SmoothScroll from "@/components/smooth-scroll";
 
-const inter = Inter({ 
-  subsets: ["latin"], 
-  variable: "--font-inter" 
+const interTight = Inter_Tight({
+  subsets: ["latin"],
+  variable: "--font-inter-tight",
+  display: "swap",
 });
 
-const playfair = Playfair_Display({ 
-  subsets: ["latin"], 
-  variable: "--font-playfair" 
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "AyurAgent Labs | Digital Growth",
-  description: "Advanced patient acquisition frameworks for wellness clinics.",
+  title: "AyurAgent Labs — A growth studio for Ayurveda",
+  description:
+    "Brand, web, campaigns and automation for Ayurveda clinics, retreats and practitioners. We build the patient acquisition systems that fill your consultation calendar.",
+  openGraph: {
+    title: "AyurAgent Labs — A growth studio for Ayurveda",
+    description:
+      "Patient acquisition systems for Ayurveda clinics, retreats and practitioners.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -24,10 +33,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable} font-sans`}>
-        {/* @ts-ignore: Bypassing React 19 type mismatch with Lenis */}
-        <SmoothScrolling>{children}</SmoothScrolling>
+    <html lang="en" className={`${interTight.variable} ${geistMono.variable}`}>
+      <body className="font-sans antialiased">
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

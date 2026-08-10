@@ -1,17 +1,212 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Assign the fonts to the entire page */
+/* ------------------------------------------------------------------
+   AyurAgent Labs — design tokens
+   Brand palette: green + white only.
+   Structure, spacing rhythm and type scale follow the reference build.
+------------------------------------------------------------------- */
+@theme {
+  /* surfaces */
+  --color-paper: #ffffff;
+  --color-paper-soft: #f4faf7;
+  --color-paper-mint: #e9f6ef;
+
+  /* ink */
+  --color-ink: #06211a;
+  --color-ink-soft: #4d6b5e;
+  --color-ink-faint: #8aa89b;
+
+  /* structure */
+  --color-line: #e2efe8;
+  --color-line-strong: #cfe5da;
+
+  /* brand greens */
+  --color-brand: #0d7a51;
+  --color-brand-mid: #16a06a;
+  --color-brand-lite: #4fd29b;
+  --color-brand-wash: #dcf4e8;
+
+  /* inverted (dark green) surfaces */
+  --color-deep: #042019;
+  --color-deep-soft: #0a3527;
+  --color-deep-line: #17442f;
+
+  /* type */
+  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --radius-brand: 0.625rem;
+}
+
 :root {
-  font-family: var(--font-inter), sans-serif;
+  --container-page: 1400px;
+  --space-hero: 200px;
+  --space-t2t: 120px;
+  --space-t2v: 160px;
 }
 
-/* Force headings to use the elegant serif font */
-h1, h2, h3, h4 {
-  font-family: var(--font-playfair), serif;
+/* ------------------------------------------------------------------
+   Lenis smooth scroll
+------------------------------------------------------------------- */
+html.lenis,
+html.lenis body {
+  height: auto;
 }
-/* Force headings to use the elegant serif font */
-h1, h2, h3, h4 {
-  font-family: var(--font-playfair), serif !important;
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------
+   Base
+------------------------------------------------------------------- */
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-brand);
+  color: #fff;
+}
+
+/* Headings inherit the sans stack — tight, editorial, no serif. */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-sans);
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-paper-soft);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line-strong);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-lite);
+}
+
+/* ------------------------------------------------------------------
+   Utilities
+------------------------------------------------------------------- */
+.page-container {
+  width: 100%;
+  max-width: var(--container-page);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 1024px) {
+  .page-container {
+    padding-inline: 3rem;
+  }
+}
+
+/* Faint grid backdrop, used behind dark sections */
+.grid-backdrop {
+  background-image: linear-gradient(
+      to right,
+      color-mix(in srgb, var(--color-brand-lite) 9%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-brand-lite) 9%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 72px 72px;
+}
+
+.grid-backdrop-light {
+  background-image: linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* Marquee */
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee-x var(--marquee-duration, 40s) linear infinite;
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+
+/* Slow spin for the hero emblem */
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow var(--spin-duration, 26s) linear infinite;
+}
+
+/* Ambient pulse for glows */
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+}
+.animate-breathe {
+  animation: breathe 9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-spin-slow,
+  .animate-breathe {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }
