@@ -6,9 +6,25 @@
  * Set NEXT_PUBLIC_SITE_URL in Vercel to the real production domain — canonical
  * URLs, the sitemap and OG tags all derive from it.
  */
-export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://ayuragentlabs.com"
-).replace(/\/$/, "");
+function resolveSiteUrl(): string {
+  // 1. Explicit override always wins — set NEXT_PUBLIC_SITE_URL once the real
+  //    domain is live if you want to pin it.
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL;
+  if (explicit) return explicit.replace(/\/$/, "");
+
+  // 2. Otherwise track whatever Vercel is actually serving as production. This
+  //    updates itself the moment a custom domain is attached to the project, so
+  //    the canonical can never point at a domain that does not resolve.
+  const production = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  if (production) return `https://${production}`;
+
+  const deployment = process.env.VERCEL_URL;
+  if (deployment) return `https://${deployment}`;
+
+  return "http://localhost:3000";
+}
+
+export const SITE_URL = resolveSiteUrl();
 
 export const SITE = {
   name: "AyurAgent Labs",
