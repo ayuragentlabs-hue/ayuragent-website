@@ -5,37 +5,8 @@ import { useState } from "react";
 import { FlipButton } from "@/components/ui/magnetic";
 import { EASE, VIEWPORT } from "@/components/ui/motion-config";
 import { Reveal, RevealLines } from "@/components/ui/reveal";
-
-const SERVICES = [
-  {
-    id: "acquisition",
-    title: "Patient Acquisition",
-    summary:
-      "Meta and Google campaigns built around treatment intent, not vanity reach — measured to the consultation, not the click.",
-    deliverables: ["Campaign architecture", "Creative testing", "Click-to-WhatsApp", "Attribution"],
-  },
-  {
-    id: "brand",
-    title: "Brand & Web",
-    summary:
-      "Identity and a site that carries the authority your practice already has offline, and converts the people it brings in.",
-    deliverables: ["Positioning", "Visual identity", "Website build", "Landing systems"],
-  },
-  {
-    id: "automation",
-    title: "AI & Automation",
-    summary:
-      "The follow-up that clinics lose money on, running itself — enquiry routing, reminders and recall sequences that never miss.",
-    deliverables: ["CRM pipelines", "WhatsApp flows", "Booking automation", "Reporting"],
-  },
-  {
-    id: "content",
-    title: "Content Studio",
-    summary:
-      "Malayalam-first reels, carousels and patient education that build the trust an ad can only borrow.",
-    deliverables: ["Reel scripting", "Shoot direction", "Carousels", "Content calendar"],
-  },
-];
+// Shared with the Service structured data so the two can never drift apart.
+import { SERVICES } from "@/lib/site";
 
 export default function Services() {
   const [active, setActive] = useState<string | null>(SERVICES[0].id);

@@ -12,7 +12,15 @@ import { useEffect, useRef, useState } from "react";
 import { FlipButton } from "@/components/ui/magnetic";
 import { EASE } from "@/components/ui/motion-config";
 
-const ROTATING = ["growth", "brand", "pipeline", "system"];
+const ROTATING = [
+  "Ayurveda clinics",
+  "panchakarma retreats",
+  "practising vaidyas",
+  "D2C ayurvedic brands",
+];
+
+// The longest entry, used to reserve width so the line never reflows mid-swap.
+const WIDEST = "D2C ayurvedic brands";
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -93,33 +101,19 @@ export default function Hero() {
               </span>
             </motion.div>
 
-            <h1 className="text-[clamp(2.6rem,7.2vw,5.6rem)] font-semibold leading-[0.96]">
+            {/* Static H1 — crawlers and answer engines index this verbatim, so the
+                headline claim stays in the markup rather than swapping in JS. */}
+            <h1 className="text-[clamp(2.35rem,6.4vw,5rem)] font-semibold leading-[1.0]">
               <span className="block overflow-hidden pb-[0.08em]">
                 <motion.span
-                  className="flex flex-wrap items-baseline gap-x-[0.22em]"
+                  className="block"
                   initial={{ y: "110%" }}
                   animate={{ y: "0%" }}
                   transition={{ duration: 1.05, ease: EASE, delay: 0.1 }}
                 >
-                  <span className="text-ink-faint">The</span>
-                  {/* Rotating word — one word on screen at a time, clipped to its own box */}
-                  <span className="relative -mb-[0.14em] inline-grid overflow-hidden pb-[0.14em]">
-                    {/* Reserves the width of the widest word so the line never reflows. */}
-                    <span className="invisible col-start-1 row-start-1" aria-hidden="true">
-                      pipeline
-                    </span>
-                    <AnimatePresence mode="wait" initial={false}>
-                      <motion.span
-                        key={ROTATING[index]}
-                        initial={{ y: "100%" }}
-                        animate={{ y: "0%" }}
-                        exit={{ y: "-100%" }}
-                        transition={{ duration: 0.5, ease: EASE }}
-                        className="col-start-1 row-start-1 bg-gradient-to-br from-brand to-brand-mid bg-clip-text text-transparent"
-                      >
-                        {ROTATING[index]}
-                      </motion.span>
-                    </AnimatePresence>
+                  <span className="text-ink-faint">The </span>
+                  <span className="bg-gradient-to-br from-brand to-brand-mid bg-clip-text text-transparent">
+                    best Ayurveda marketer
                   </span>
                 </motion.span>
               </span>
@@ -135,15 +129,43 @@ export default function Hero() {
               </span>
             </h1>
 
+            {/* Audience rotator — keeps the hero's motion beat and names the
+                segments we want to be found for. */}
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: EASE, delay: 0.34 }}
+              className="flex flex-wrap items-baseline gap-x-2 text-[1.05rem] font-medium md:text-[1.2rem]"
+            >
+              <span className="text-ink-faint">Built for</span>
+              <span className="relative -mb-[0.22em] inline-grid overflow-hidden pb-[0.22em]">
+                <span className="invisible col-start-1 row-start-1" aria-hidden="true">
+                  {WIDEST}
+                </span>
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.span
+                    key={ROTATING[index]}
+                    initial={{ y: "100%" }}
+                    animate={{ y: "0%" }}
+                    exit={{ y: "-100%" }}
+                    transition={{ duration: 0.5, ease: EASE }}
+                    className="col-start-1 row-start-1 whitespace-nowrap text-brand"
+                  >
+                    {ROTATING[index]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+            </motion.p>
+
             <motion.p
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.4 }}
               className="max-w-xl text-[1.05rem] leading-relaxed text-ink-soft md:text-[1.15rem]"
             >
-              A growth studio for Ayurveda. We build the acquisition systems that turn
-              traditional practice into a booked-out clinic — brand, web, campaigns and
-              automation, run end to end.
+              An Ayurveda marketing agency in Kerala. We build the patient acquisition
+              systems that fill your consultation calendar — brand, website, Meta and
+              Google campaigns, and WhatsApp automation, run end to end.
             </motion.p>
 
             <motion.div

@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { useRef } from "react";
 import { Reveal } from "@/components/ui/reveal";
+import { SITE } from "@/lib/site";
 
 /**
  * The studio's own positioning statement, not a client testimonial. If you ever
@@ -78,9 +79,11 @@ export default function Testimonial() {
                 </svg>
               </span>
               <span className="leading-tight">
-                <span className="block text-[0.98rem] font-medium">AyurAgent Labs</span>
+                <span className="block text-[0.98rem] font-medium">
+                  {SITE.founder.name}
+                </span>
                 <span className="block font-mono text-[0.72rem] uppercase tracking-[0.12em] text-ink-faint">
-                  Kerala, India
+                  {SITE.founder.role}, {SITE.name} · {SITE.region}, {SITE.country}
                 </span>
               </span>
             </div>

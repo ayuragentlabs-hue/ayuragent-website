@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { CharFlip } from "@/components/ui/magnetic";
 import { VIEWPORT } from "@/components/ui/motion-config";
+import { SITE } from "@/lib/site";
 
 const COLUMNS = [
   {
@@ -12,6 +13,7 @@ const COLUMNS = [
       { label: "Work", href: "#work" },
       { label: "Services", href: "#services" },
       { label: "Impact", href: "#impact" },
+      { label: "FAQ", href: "#faq" },
       { label: "Contact", href: "#contact" },
     ],
   },
@@ -63,11 +65,15 @@ export default function Footer() {
               </span>
             </div>
             <p className="max-w-xs text-[0.9rem] leading-relaxed text-ink-soft">
-              A growth studio for Ayurveda. Brand, web, campaigns and automation for
-              clinics that intend to lead their region.
+              An Ayurveda marketing agency in Kerala. Brand, web, campaigns and
+              automation for clinics that intend to lead their region.
+            </p>
+            <p className="text-[0.9rem] text-ink-soft">
+              Founded by{" "}
+              <span className="font-medium text-ink">{SITE.founder.name}</span>
             </p>
             <p className="font-mono text-[0.72rem] uppercase tracking-[0.12em] text-ink-faint">
-              Kerala, India
+              {SITE.region}, {SITE.country}
             </p>
           </div>
 
